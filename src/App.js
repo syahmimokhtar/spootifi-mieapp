@@ -84,7 +84,7 @@ function App() {
               <AboutArtist items={artistInfo} />
             </Content>
             <Content style={contentStyle}>
-              Top Tracks
+             Artist Top Tracks
               <ListResults items={tracks} />
             </Content>
           </Row>

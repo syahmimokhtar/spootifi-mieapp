@@ -10,20 +10,18 @@ const host = url.host;
 
 // Check if the host contains "localhost"
 if (host.includes("localhost:3000")) {
-  urlHost=`http://localhost:3000`
+  urlHost = `http://localhost:3000`;
 } else {
-  urlHost=`https://syahmimokhtar.github.io/spootifi-mieapp`;
+  urlHost = `https://syahmimokhtar.github.io/spootifi-mieapp`;
 }
 
-
-const misc=`&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state`;
+const misc = `&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state`;
 const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${urlHost}&response_type=token${misc}`;
 
 const Login = () => {
   const [token, setToken] = useState("");
   const [profileData, setProfileData] = useState(null);
-  const [lyrics, setLyrics] = useState("")
-
+  const [lyrics, setLyrics] = useState("");
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -56,7 +54,6 @@ const Login = () => {
       }
     };
 
-
     const fetchData = async () => {
       try {
         const data = await getProfile(token);
@@ -69,10 +66,10 @@ const Login = () => {
     fetchData(token);
   }, []);
 
-
   const handleLogout = () => {
     setToken("");
     window.localStorage.removeItem("token");
+    window.location.reload();
   };
 
   const handleLogin = (e) => {
@@ -81,22 +78,32 @@ const Login = () => {
   };
 
   return (
-    <> 
+    <>
       {!token ? (
-        <ButtonStyle  size="medium"type="primary"  htmlType="button" onClick={handleLogin}>Login</ButtonStyle>
+        <ButtonStyle
+          size="large"
+          type="primary"
+          htmlType="button"
+          onClick={handleLogin}
+        >
+          Login
+        </ButtonStyle>
       ) : (
-        <ButtonStyle  size="medium"type="primary"  htmlType="button" onClick={handleLogout}>Logout</ButtonStyle>
-        
+        <ButtonStyle
+          size="large"
+          type="primary"
+          htmlType="button"
+          onClick={handleLogout}
+        >
+          Logout
+        </ButtonStyle>
       )}
-
     </>
-
-    
   );
 };
 
-
-
 export default Login;
 
-      {/* <div>{profileData ? profileData.display_name : ""}</div> */}
+{
+  /* <div>{profileData ? profileData.display_name : ""}</div> */
+}

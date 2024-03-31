@@ -46,38 +46,41 @@ const SearchBar = ({
       };
 
       const trimSearchKey = capitalize(searchKey);
-      console.log(trimSearchKey);
+      // console.log(trimSearchKey);
 
       //get albums, playlist , artist,track
-      var urlData = `https://api.spotify.com/v1/search?q=${trimSearchKey}&type=show,artist,track,album,playlist&limit=10&market=ES`;
+      var urlData = `https://api.spotify.com/v1/search?q=${trimSearchKey}&type=show,artist,track,album,playlist&limit=10&market=ES&sort=popularity`;
       const response = await axios.get(urlData, { headers });
        console.log('searched', response.data)
       const playlistData = response.data.playlists.items;
       setPlaylists(playlistData);
 
       //search artist name and get the artist id
-      var element=response.data.artists.items.find(item=>item.name.includes(`${trimSearchKey}`))
-      console.log(element)
-
-
-      const highestScoreObject = response.data.artists.items.reduce((acc, curr) => {
-        return curr.popularity > acc.popularity ? curr : acc;
-      }, response.data.artists.items[0]);
-
-       elementID=highestScoreObject;
-      
-
-
+      var element=response.data.artists.items.find(item=>item.name===(`${trimSearchKey}`))
       var elementID;
-      if(element){
-        elementID=element.id
+
+      if(!element){
+        console.log('element x wujud')
+        var search=response.data.tracks.items.find(item=>item.name===(`${trimSearchKey}`))
+        if(search){
+           elementID=search.artists[0].id;
+           console.log(search)
+        }
+        else{
+          console.log('couldnt find')
+          console.log(response.data.artists.items[0].id)
+          elementID=response.data.artists.items[0].id;
+          // return;
+        }
       }
-      else if(!element){
-        var element2=response.data.tracks.items.find(item=>item.name.includes(`${trimSearchKey}`))
-        elementID=element2.artists[0].id
+
+      else if(element){
+         console.log('element wujud')
+         elementID=element.id;
       }
 
 
+    
       // get artist info
       var artistID = elementID;
       const artistResponse = `https://api.spotify.com/v1/artists/${artistID}`;
@@ -149,7 +152,7 @@ const SearchBar = ({
             placeholder="Search here..."
           />
           <Button
-            size="medium"
+            size="large"
             type="primary"
             onClick={handleSearch}
             style={{ backgroundColor: "#35B86B" }}
@@ -157,14 +160,14 @@ const SearchBar = ({
             icon={<SearchOutlined />}
           ></Button>
 
-          <Button
+          {/* <Button
             size="medium"
             type="primary"
             onClick={onReset}
             style={{ backgroundColor: "#35B86B" }}
             htmlType="button"
             icon={<UndoOutlined />}
-          ></Button>
+          ></Button> */}
 
           <Login/>
 

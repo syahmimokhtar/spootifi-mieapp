@@ -65,37 +65,11 @@ const ListResults = ({items}) => {
 
       </VirtualList>
 
-
       </List>
     </>
 
 
-  //   <List>
- 
 
-  //   <VirtualList
-  //     style={{
-  //       backgroundColor:'#5B5B5B', padding:'2px'
-  //     }}
-  //     data={data}
-  //     height={ContainerHeight}
-  //     itemHeight={47}
-  //     itemKey="email"
-  //    // onScroll={onScroll}
-  //   >
-  //     {(item) => (
-  //       <List.Item key={item.email} style={{        color:'#fff'      }}>
-  //         <List.Item.Meta
-  //           avatar={<Avatar shape="square" size={50} style={{  padding:'1px'}} src={item.picture.large} />}
-  //           title={<a  style={{color:'#fff'}} href="https://ant.design">{item.name.last}</a>}
-  //           description="song title"
-  //         />
-          
-  //       </List.Item>
-  //     )}
-  //   </VirtualList>
-
-  // </List>
   )
 }
 
