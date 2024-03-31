@@ -1,0 +1,55 @@
+{
+  "homepage": "https://syahmimokhtar.github.io/spooztify-appmie",
+  "name": "songs-searcher-appv1",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@jeve/lyrics-finder": "^1.0.1",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "antd": "^5.15.3",
+    "axios": "^1.6.8",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.0",
+    "gh-pages": "^6.1.1",
+    "lyrics-finder": "^21.7.0",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.10.2",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "react-spotify-web-playback": "^0.14.3",
+    "sass": "^1.72.0",
+    "spotify-web-api-node": "^5.0.2",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "env-cmd react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "build": "env-cmd react-scripts build",
+    "test": "env-cmd react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0"
+  }
+}

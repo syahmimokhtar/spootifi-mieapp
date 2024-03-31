@@ -1,0 +1,12 @@
+.App {
+  text-align: center;
+  margin:50px;
+}
+
+
+html, body {
+  background-color: #000;
+  margin: 0; /* Optionally remove default margin */
+  padding: 0; /* Optionally remove default padding */
+  height: 100%; /* Optionally ensure full height */
+}
