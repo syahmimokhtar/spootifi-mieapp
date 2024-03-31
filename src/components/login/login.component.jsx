@@ -4,8 +4,18 @@ import axios from "axios";
 
 const clientId = process.env.REACT_APP_API_KEY;
 
+const urlParams = new URLSearchParams(window.location.search);
+var url;
+
+if (urlParams.toString().includes("localhost:3000")) {
+  url=`http://localhost:3000`
+} else {
+  url=`https://syahmimokhtar.github.io/spootifi-mieapp`;
+}
+
+
 const misc=`&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state`;
-const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=http://localhost:3000&response_type=token${misc}`;
+const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${url}&response_type=token${misc}`;
 
 const Login = () => {
   const [token, setToken] = useState("");

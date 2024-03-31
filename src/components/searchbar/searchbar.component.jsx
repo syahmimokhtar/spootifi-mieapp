@@ -51,7 +51,7 @@ const SearchBar = ({
       //get albums, playlist , artist,track
       var urlData = `https://api.spotify.com/v1/search?q=${trimSearchKey}&type=show,artist,track,album,playlist&limit=10&market=ES`;
       const response = await axios.get(urlData, { headers });
-      //  console.log('searched', response.data)
+       console.log('searched', response.data)
       const playlistData = response.data.playlists.items;
       setPlaylists(playlistData);
 
@@ -68,9 +68,6 @@ const SearchBar = ({
         elementID=element2.artists[0].id
       }
 
-      else{
-        console.log('could not search')
-      }
 
 
 
