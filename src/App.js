@@ -40,10 +40,10 @@ const items = [
 ];
 
 const layoutStyle = {
-  width:"98%",
+  width:"96%",
   maxWidth: "100%",
   minHeight: "100vh",
-  margin:'10px',
+  margin:'auto',
 };
 const contentStyle = {
   margin: "10px",

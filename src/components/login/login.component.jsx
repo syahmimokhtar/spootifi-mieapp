@@ -12,7 +12,7 @@ const host = url.host;
 if (host.includes("localhost:3000")) {
   urlHost=`http://localhost:3000`
 } else {
-  urlHost=`http://syahmimokhtar.github.io/spootifi-mieapp`;
+  urlHost=`https://syahmimokhtar.github.io/spootifi-mieapp`;
 }
 
 

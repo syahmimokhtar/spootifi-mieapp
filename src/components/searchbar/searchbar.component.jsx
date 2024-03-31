@@ -56,23 +56,30 @@ const SearchBar = ({
       setPlaylists(playlistData);
 
       //search artist name and get the artist id
-      // var element=response.data.albums.items[0].name.find(item=>item.name===`${trimSearchKey}`)
-      var element=response.data.artists.items.find(item=>item.name===`${trimSearchKey}`)
+      var element=response.data.artists.items.find(item=>item.name.includes(`${trimSearchKey}`))
+      console.log(element)
+
+
+      const highestScoreObject = response.data.artists.items.reduce((acc, curr) => {
+        return curr.popularity > acc.popularity ? curr : acc;
+      }, response.data.artists.items[0]);
+
+       elementID=highestScoreObject;
+      
+
+
       var elementID;
       if(element){
         elementID=element.id
       }
-
       else if(!element){
         var element2=response.data.tracks.items.find(item=>item.name.includes(`${trimSearchKey}`))
         elementID=element2.artists[0].id
       }
 
 
-
-
-      var artistID = elementID;
       // get artist info
+      var artistID = elementID;
       const artistResponse = `https://api.spotify.com/v1/artists/${artistID}`;
       const artistData = await axios.get(artistResponse, { headers });
       const artistInfo = artistData.data;
