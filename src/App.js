@@ -40,10 +40,10 @@ const items = [
 ];
 
 const layoutStyle = {
-  borderRadius: 8,
-  width: "100%",
+  width:"98%",
   maxWidth: "100%",
   minHeight: "100vh",
+  margin:'10px',
 };
 const contentStyle = {
   margin: "10px",
