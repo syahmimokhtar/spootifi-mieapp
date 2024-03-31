@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/spootifi-mieapp/static/css/main.531fd9ee.css",
-    "main.js": "/spootifi-mieapp/static/js/main.12c5b8bd.js",
+    "main.js": "/spootifi-mieapp/static/js/main.f026900f.js",
     "static/js/453.a9b5369e.chunk.js": "/spootifi-mieapp/static/js/453.a9b5369e.chunk.js",
     "index.html": "/spootifi-mieapp/index.html",
     "main.531fd9ee.css.map": "/spootifi-mieapp/static/css/main.531fd9ee.css.map",
-    "main.12c5b8bd.js.map": "/spootifi-mieapp/static/js/main.12c5b8bd.js.map",
+    "main.f026900f.js.map": "/spootifi-mieapp/static/js/main.f026900f.js.map",
     "453.a9b5369e.chunk.js.map": "/spootifi-mieapp/static/js/453.a9b5369e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.531fd9ee.css",
-    "static/js/main.12c5b8bd.js"
+    "static/js/main.f026900f.js"
   ]
 }
