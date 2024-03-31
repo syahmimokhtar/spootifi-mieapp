@@ -128,7 +128,7 @@ const SearchBar = ({
         <Space.Compact
           style={{
             width: "100%",
-            margin: "20px",
+            margin: " 10px 12px",
           }}
         >
           <Input
@@ -142,7 +142,7 @@ const SearchBar = ({
             placeholder="Search here..."
           />
           <Button
-            size="large"
+            size="medium"
             type="primary"
             onClick={handleSearch}
             style={{ backgroundColor: "#35B86B" }}
@@ -151,14 +151,13 @@ const SearchBar = ({
           ></Button>
 
           <Button
-            size="large"
+            size="medium"
             type="primary"
             onClick={onReset}
             style={{ backgroundColor: "#35B86B" }}
             htmlType="button"
             icon={<UndoOutlined />}
           ></Button>
-          {/* <LyricsFinder />  */}
 
           <Login/>
 

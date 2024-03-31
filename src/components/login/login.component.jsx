@@ -81,9 +81,9 @@ const Login = () => {
   return (
     <> 
       {!token ? (
-        <ButtonStyle  size="large"type="primary"  htmlType="button" onClick={handleLogin}>Login</ButtonStyle>
+        <ButtonStyle  size="medium"type="primary"  htmlType="button" onClick={handleLogin}>Login</ButtonStyle>
       ) : (
-        <ButtonStyle  size="large"type="primary"  htmlType="button" onClick={handleLogout}>Logout</ButtonStyle>
+        <ButtonStyle  size="medium"type="primary"  htmlType="button" onClick={handleLogout}>Logout</ButtonStyle>
         
       )}
 

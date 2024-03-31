@@ -68,7 +68,7 @@ function App() {
 
     <Layout style={layoutStyle}>
       <Layout>
-        <HeaderWeb style={{ padding: 0, background: "#151313" }}>
+        <HeaderWeb >
           <SearchBar
             setArtistInfo={setArtistInfo}
             setAlbums={setAlbums}

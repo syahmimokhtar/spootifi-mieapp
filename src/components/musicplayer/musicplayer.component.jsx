@@ -24,7 +24,7 @@ const playerStyles={
   return (
         <SpotifyPlayer
         syncExternalDevice={false}
-        initialVolume ={25}
+        initialVolume ={40}
         layout ='responsive'
         styles={playerStyles}
         token={accessToken}

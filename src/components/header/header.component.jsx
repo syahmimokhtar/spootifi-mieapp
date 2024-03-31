@@ -7,21 +7,19 @@ const { Header} = Layout;
 const headerStyle = {
   textAlign: 'center',
   width:'100%',
+  maxWidth:'100%',
   color: '#fff',
   height: '100px',
-  paddingInline: 48,
+  paddingInline:40,
   lineHeight: '100px',
   backgroundColor: '#201E1E',
+  padding:1,
+  background: "#151313"
 };
 
 const HeaderWeb = ({children, ...otherProps}) => {
   return (
-    // <header className="header">
-    //     <div className="title">
-    //       <TypoStyles level={2}>Songs Searcher</TypoStyles>
-    //     </div>
-    // </header>
-
+  
     <Header style={headerStyle} {...otherProps}>
       {children}
     </Header>
