@@ -9,14 +9,14 @@ const style={
   color:'white'
 }
 
-const ArtistResult = ({ items }) => {
+const Artists = ({ items }) => {
 
    var artistData=items.artists;
 
   return (
 
     <Flex style={{padding:'40px'}} wrap="wrap" gap="medium">
-    {artistData && artistData.length > 0 ? (
+    {artistData && artistData.length > 0 &&(
       artistData.map((artist, index) => (
         <CardAlbum key={index} size={20} cover={<img alt="example" src={`${artist.images[0].url}`}  style={{height: '150px', objectFit: 'cover' }} />}>
             <Meta    title={<span style={style}>{artist.name} </span>} 
@@ -26,11 +26,9 @@ const ArtistResult = ({ items }) => {
         </CardAlbum>
 
       ))
-    ) : (
-      <div>No artists found</div>
-    )}
+    ) }
   </Flex>
   );
 };
 
-export default ArtistResult;
+export default Artists;

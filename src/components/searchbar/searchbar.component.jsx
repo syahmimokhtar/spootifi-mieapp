@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./searchbar.styles.scss";
-import { SearchOutlined, UndoOutlined } from "@ant-design/icons";
+import { SearchOutlined } from "@ant-design/icons";
 import { Form, Input, Button, Row, Col, Space } from "antd";
 import axios from "axios";
 import getToken from "./tokenAuth.component";
 import Login from "../login/login.component";
-import LyricsFinder  from "../searchresults/lyricsfinder.component";
 
 
 const SearchBar = ({
@@ -25,7 +24,7 @@ const SearchBar = ({
   }, []);
 
   const capitalize = (str) => {
-    var str = str.split(" ");
+    str.split(" ");
     var converted = str.map(
       (word) => word.charAt(0).toUpperCase() + word.slice(1)
     );
@@ -36,7 +35,7 @@ const SearchBar = ({
   const fetchAlbums = async (searchKey) => {
     try {
 
-      if(searchKey.trim()==""){
+      if(searchKey.trim()===""){
         return
       }
       
@@ -46,7 +45,6 @@ const SearchBar = ({
       };
 
       const trimSearchKey = capitalize(searchKey);
-      // console.log(trimSearchKey);
 
       //get albums, playlist , artist,track
       var urlData = `https://api.spotify.com/v1/search?q=${trimSearchKey}&type=show,artist,track,album,playlist&limit=10&market=ES&sort=popularity`;
@@ -60,7 +58,7 @@ const SearchBar = ({
       var elementID;
 
       if(!element){
-        console.log('element x wujud')
+        console.log('artis tak dapat cari so search lagu')
         var search=response.data.tracks.items.find(item=>item.name===(`${trimSearchKey}`))
         if(search){
            elementID=search.artists[0].id;
@@ -68,14 +66,13 @@ const SearchBar = ({
         }
         else{
           console.log('couldnt find')
-          console.log(response.data.artists.items[0].id)
           elementID=response.data.artists.items[0].id;
           // return;
         }
       }
 
       else if(element){
-         console.log('element wujud')
+         console.log('carian artis wujud')
          elementID=element.id;
       }
 
@@ -113,9 +110,7 @@ const SearchBar = ({
     }
   };
 
-  const onReset = () => {
-    window.location.reload();
-  };
+
 
   const handleChange = (event) => {
     let value = event.target.value;
@@ -126,6 +121,7 @@ const SearchBar = ({
     e.preventDefault();
     try {
       await fetchAlbums(searchValue);
+      setSearchValue("");
     } catch (error) {
       console.error("Error searching:", error);
     }
@@ -139,6 +135,7 @@ const SearchBar = ({
           style={{
             width: "100%",
             margin: " 10px 12px",
+            padding:"20px 4px"
           }}
         >
           <Input

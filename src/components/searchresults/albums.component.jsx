@@ -9,10 +9,10 @@ const style={
   color:'white'
 }
 
-const SearchResults = ({ items }) => {
+const Albums = ({ items }) => {
   return (
-        <Flex   style={{padding:'40px'}} wrap="wrap" gap="medium" >
-        {items && items.length > 0 ? (
+        <Flex   style={{ padding:'40px'}} wrap="wrap" gap="medium" direction="row">
+        {items && items.length > 0 && (
           items.map((item, i) => (
             <CardAlbum key={i} cover={<img alt="example" src={`${item.images[0].url}`} />}>
               <Meta  title={<span style={style}> {item.name}-{item.release_date.substring(0, 4)}</span>}  
@@ -20,11 +20,9 @@ const SearchResults = ({ items }) => {
               />
             </CardAlbum>
           ))
-        ) : (
-          <div>No albums found</div>
-        )}
+        ) }
       </Flex>
   );
 };
 
-export default SearchResults;
+export default Albums;

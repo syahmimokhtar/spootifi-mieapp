@@ -3,41 +3,15 @@ import "./App.css";
 import HeaderWeb from "./components/header/header.component";
 import FooterWeb from "./components/footer/footer.component";
 import SearchBar from "./components/searchbar/searchbar.component";
-import SearchResults from "./components/searchresults/searchresults.component";
-import ListResults from "./components/searchresults/listresults.component";
+import Albums from "./components/searchresults/albums.component";
+import ArtistListTracks from "./components/searchresults/tracks.component";
 import PlayList from "./components/searchresults/playlist.component";
-import ArtisResult from "./components/searchresults/artistresult.component";
-import Player from "./components/musicplayer/musicplayer.component";
 import AboutArtist from "./components/searchresults/aboutartist.component";
-import Login from "./components/login/login.component";
 
-import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
 import { Row, Col, Layout, Menu } from "antd";
-import ArtistResult from "./components/searchresults/artistresult.component";
-const { Sider, Content } = Layout;
+import Artists from "./components/searchresults/artist.component";
+const {  Content } = Layout;
 
-function getItem(label, key, icon, children) {
-  return { key, icon, children, label };
-}
-const items = [
-  getItem("Option 1", "1", <PieChartOutlined />),
-  getItem("Option 2", "2", <DesktopOutlined />),
-  getItem("User", "sub1", <UserOutlined />, [
-    getItem("Tom", "3"),
-    getItem("Bill", "4"),
-    getItem("Alex", "5"),
-  ]),
-  getItem("Team", "sub2", <TeamOutlined />, [
-    getItem("Team 1", "6"),
-    getItem("Team 2", "8"),
-  ]),
-];
 
 const layoutStyle = {
   width:"96%",
@@ -84,8 +58,7 @@ function App() {
               <AboutArtist items={artistInfo} />
             </Content>
             <Content style={contentStyle}>
-             Artist Top Tracks
-              <ListResults items={tracks} />
+              <ArtistListTracks items={tracks} />
             </Content>
           </Row>
         </Layout>
@@ -93,19 +66,18 @@ function App() {
         <Layout style={{ background: "#151313" }}>
           <Row>
             <Content style={contentStyle}>
-              Albums
-              <SearchResults items={albums} />
+              
+              <Albums items={albums} />
             </Content>
           </Row>
 
           <Content style={contentStyle}>
-            Playlists
+            
             <PlayList items={playlists} />
           </Content>
 
           <Content style={contentStyle}>
-            Related Artists
-            <ArtistResult items={relatedArtists} />
+            <Artists items={relatedArtists} />
           </Content>
         </Layout>
 

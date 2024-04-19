@@ -38,32 +38,32 @@ const Login = () => {
 
     setToken(token);
 
-    const getProfile = async () => {
-      try {
-        const headers = {
-          Authorization: "Bearer " + token,
-        };
+    // const getProfile = async () => {
+    //   try {
+    //     const headers = {
+    //       Authorization: "Bearer " + token,
+    //     };
 
-        //get albums, playlist , artist,track
-        var urlData = `https://api.spotify.com/v1/me`;
-        const response = await axios.get(urlData, { headers });
-        const profileData = response.data;
-        return profileData;
-      } catch (error) {
-        console.log(error);
-      }
-    };
+    //     //get albums, playlist , artist,track
+    //     var urlData = `https://api.spotify.com/v1/me`;
+    //     const response = await axios.get(urlData, { headers });
+    //     const profileData = response.data;
+    //     return profileData;
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // };
 
-    const fetchData = async () => {
-      try {
-        const data = await getProfile(token);
-        setProfileData(data);
-      } catch (error) {
-        // Handle errors
-      }
-    };
+    // const fetchData = async () => {
+    //   try {
+    //     const data = await getProfile(token);
+    //     setProfileData(data);
+    //   } catch (error) {
+    //     // Handle errors
+    //   }
+    // };
 
-    fetchData(token);
+    //fetchData(token);
   }, []);
 
   const handleLogout = () => {

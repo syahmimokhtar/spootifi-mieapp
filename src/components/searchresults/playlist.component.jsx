@@ -11,7 +11,7 @@ const style={
 const PlayList = ({ items }) => {
   return (
         <Flex  style={{padding:'40px'}} wrap="wrap" gap="medium" >
-        {items && items.length > 0 ? (
+        {items && items.length > 0 && (
           items.map((item, i) => (
             <CardAlbum key={i} cover={<img alt="example" src={`${item.images[0].url}`} />}>
               <Meta   title={<span style={style}>{item.name}</span> }  
@@ -19,9 +19,7 @@ const PlayList = ({ items }) => {
               />
             </CardAlbum>
           ))
-        ) : (
-          <div>No playlists found</div>
-        )}
+        ) }
       </Flex>
   );
 };
