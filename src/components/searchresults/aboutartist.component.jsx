@@ -1,20 +1,11 @@
 import React from "react";
-import CardAlbum from "../card/card.component";
 import TypoStyles from "../typography/typography.component";
 import { SpotifyOutlined } from "@ant-design/icons";
-import "./result.styles.scss";
 import {
-  Space,
-  Tag,
-  Empty,
-  Flex,
   Button,
   Card,
-  Input,
   Col,
   Row,
-  Layout,
-  Divider,
 } from "antd";
 
 const cardStyle = {
@@ -30,9 +21,7 @@ const cardStyle = {
 const imgStyle = { height: "auto", width: "100%", padding: "12px" };
 
 const AboutArtist = ({ items }) => {
-  console.log('about artist', items);
 
-  
   return (
   <>
       {items.length !=0 ? (

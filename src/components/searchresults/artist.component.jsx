@@ -1,8 +1,7 @@
 import React from "react";
 import CardAlbum from "../card/card.component";
 import ButtonStyle from "../button/button.component";
-import "./result.styles.scss";
-import { Flex, Button, Card, Input, Col, Row, Layout, Avatar } from "antd";
+import { Flex, Card, } from "antd";
 const { Meta } = Card;
 
 const style={

@@ -6,6 +6,16 @@ import axios from "axios";
 import getToken from "./tokenAuth.component";
 import Login from "../login/login.component";
 
+ //capitalize searched
+ const capitalize = (str) => {
+  var string= str.split(" ");
+  var converted = string.map(
+    (word) => word.charAt(0).toUpperCase() + word.slice(1)
+  );
+  var finalWord = converted.join(" ");
+  return finalWord;
+};
+
 
 const SearchBar = ({
   setAlbums,
@@ -23,14 +33,34 @@ const SearchBar = ({
       .catch((error) => console.error("Error setting access token:", error));
   }, []);
 
-  const capitalize = (str) => {
-    str.split(" ");
-    var converted = str.map(
-      (word) => word.charAt(0).toUpperCase() + word.slice(1)
-    );
-    var finalWord = converted.join(" ");
-    return finalWord;
-  };
+
+
+
+  // useEffect(() => {
+  //   const fetchGenres = async () => {
+  //     try {
+
+
+  //       const headers = {
+  //         "Content-Type": "application/json",
+  //         Authorization: "Bearer " + accessToken,
+  //       };
+  //       const urlGenre=`https://api.spotify.com/v1/recommendations/available-genre-seeds`;
+  //        const response = await axios.get(urlGenre, {headers});
+  //        console.log('data', typeof(response))
+  //       // const { genres } = response.data;
+  //       // // Update state with the genre data
+  //       // console.log(genres)
+  //       // setGenre(genres);
+  //     } catch (error) {
+  //       console.error('Error fetching genres:', error);
+  //     }
+  //   };
+
+  //   fetchGenres();
+  // });// Empty dependency array means this effect runs only once, on mount
+
+
 
   const fetchAlbums = async (searchKey) => {
     try {
@@ -45,6 +75,8 @@ const SearchBar = ({
       };
 
       const trimSearchKey = capitalize(searchKey);
+
+      
 
       //get albums, playlist , artist,track
       var urlData = `https://api.spotify.com/v1/search?q=${trimSearchKey}&type=show,artist,track,album,playlist&limit=10&market=ES&sort=popularity`;
@@ -128,51 +160,52 @@ const SearchBar = ({
   };
 
   return (
-    <Row gutter={[16, 16]}>
-      <Col span={10} />
-      <Form name="search-form" layout="vertical" onSubmit={handleSearch}>
-        <Space.Compact
-          style={{
-            width: "100%",
-            margin: " 10px 12px",
-            padding:"20px 4px"
-          }}
-        >
-          <Input
+
+      <Row gutter={[16, 16]}>
+        <Col span={10} />
+        <Form name="search-form" layout="vertical" onSubmit={handleSearch}>
+          <Space.Compact
             style={{
               width: "100%",
-              color: "white",
-              backgroundColor: "#201E1E",
-              border: "none",
+              margin: " 10px 12px",
+              padding:"20px 4px"
             }}
-            onChange={handleChange}
-            placeholder="Search here..."
-          />
-          <Button
-            size="large"
-            type="primary"
-            onClick={handleSearch}
-            style={{ backgroundColor: "#35B86B" }}
-            htmlType="submit"
-            icon={<SearchOutlined />}
-          ></Button>
+          >
+            <Input
+              style={{
+                width: "100%",
+                color: "white",
+                backgroundColor: "#201E1E",
+                border: "none",
+              }}
+              onChange={handleChange}
+              placeholder="Search here..."
+            />
+            <Button
+              size="large"
+              type="primary"
+              onClick={handleSearch}
+              style={{ backgroundColor: "#35B86B" }}
+              htmlType="submit"
+              icon={<SearchOutlined />}
+            ></Button>
 
-          {/* <Button
-            size="medium"
-            type="primary"
-            onClick={onReset}
-            style={{ backgroundColor: "#35B86B" }}
-            htmlType="button"
-            icon={<UndoOutlined />}
-          ></Button> */}
+            {/* <Button
+              size="medium"
+              type="primary"
+              onClick={onReset}
+              style={{ backgroundColor: "#35B86B" }}
+              htmlType="button"
+              icon={<UndoOutlined />}
+            ></Button> */}
 
-          <Login/>
+            <Login/>
 
 
-        </Space.Compact>
-      </Form>
-      <Col />
-    </Row>
+          </Space.Compact>
+        </Form>
+        <Col />
+      </Row>
   );
 };
 

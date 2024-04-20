@@ -8,11 +8,10 @@ import ArtistListTracks from "./components/searchresults/tracks.component";
 import PlayList from "./components/searchresults/playlist.component";
 import AboutArtist from "./components/searchresults/aboutartist.component";
 
-import { Row, Col, Layout, Menu } from "antd";
+import { Flex, Row, Layout, Menu } from "antd";
 import Artists from "./components/searchresults/artist.component";
+
 const {  Content } = Layout;
-
-
 const layoutStyle = {
   width:"96%",
   maxWidth: "100%",
@@ -30,12 +29,12 @@ const contentStyle = {
 };
 
 function App() {
-  const [collapsed, setCollapsed] = useState("collapsed");
   const [albums, setAlbums] = useState([]);
   const [tracks, setTracks] = useState([]);
   const [playlists, setPlaylists] = useState([]);
   const [relatedArtists, setRelatedArtists] = useState([]);
   const [artistInfo, setArtistInfo] = useState([]);
+  const [genre, setGenre] = useState([]);
 
   return (
 
@@ -43,30 +42,38 @@ function App() {
     <Layout style={layoutStyle}>
       <Layout>
         <HeaderWeb >
+        <Flex justify="center" align="center">
           <SearchBar
             setArtistInfo={setArtistInfo}
             setAlbums={setAlbums}
             setTracks={setTracks}
             setPlaylists={setPlaylists}
             setRelatedArtists={setRelatedArtists}
+            setGenre={setGenre}
           />
-        </HeaderWeb>
+        </Flex>
 
+      </HeaderWeb >
+
+      
         <Layout style={{ maxWidth: "100%", background: "#151313", padding: "10px" }}>
-          <Row>
-            <Content style={contentStyle}>
-              <AboutArtist items={artistInfo} />
-            </Content>
-            <Content style={contentStyle}>
-              <ArtistListTracks items={tracks} />
-            </Content>
-          </Row>
+            <Row>
+              <Flex justify="flex-start" align="flex-start">
+                <Content style={contentStyle}>
+                  <AboutArtist items={artistInfo} />
+                </Content>
+               </Flex>
+
+              <Content style={contentStyle}>
+                <ArtistListTracks items={tracks} />
+              </Content>
+            </Row>
+
         </Layout>
 
         <Layout style={{ background: "#151313" }}>
           <Row>
             <Content style={contentStyle}>
-              
               <Albums items={albums} />
             </Content>
           </Row>
