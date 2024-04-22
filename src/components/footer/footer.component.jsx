@@ -11,7 +11,7 @@ const FooterWeb=({children, ...otherProps})=>
     return (
    
     <Footer style={footerStyle}>
-      <TypoStyles style={{textAlign:'center', color:'white'}} level={3} >&copy; Syahmi Mokhtar 2024.All rights reserved.</TypoStyles>
+      <TypoStyles style={{textAlign:'center', color:'white'}} level={3} >&copy; Syahmi Mokhtar . All rights reserved.</TypoStyles>
     </Footer>
 
     )

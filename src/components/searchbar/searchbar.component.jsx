@@ -36,32 +36,6 @@ const SearchBar = ({
 
 
 
-
-  // useEffect(() => {
-  //   const fetchGenres = async () => {
-  //     try {
-
-
-  //       const headers = {
-  //         "Content-Type": "application/json",
-  //         Authorization: "Bearer " + accessToken,
-  //       };
-  //         const urlGenre=`https://api.spotify.com/v1/recommendations/available-genre-seeds`;
-  //         const responseData = await axios.get(urlGenre, {headers});
-  //         const { genres } = responseData.data;
-  //         // Update state with the genre data
-  //         console.log(genres)
-  //         setGenre(genres);
-  //     } catch (error) {
-  //       console.error('Error fetching genres:', error);
-  //     }
-  //   };
-
-  //   fetchGenres();
-  // });// Empty dependency array means this effect runs only once, on mount
-
-
-
   const fetchAlbums = async (searchKey) => {
     try {
 
@@ -81,7 +55,7 @@ const SearchBar = ({
       //get albums, playlist , artist,track
       var urlData = `https://api.spotify.com/v1/search?q=${trimSearchKey}&type=show,artist,track,album,playlist&limit=10&market=ES&sort=popularity`;
       const response = await axios.get(urlData, { headers });
-       console.log('searched', response.data)
+      //  console.log('searched', response.data)
       const playlistData = response.data.playlists.items;
       setPlaylists(playlistData);
 
@@ -167,8 +141,8 @@ const SearchBar = ({
           <Space.Compact
             style={{
               width: "100%",
-              margin: "10px 10px ",
-              padding: "20px 14px",
+              marginRight: "50px",
+              padding: "4px",
             }}
           >
             <Input
@@ -179,7 +153,7 @@ const SearchBar = ({
                 border: "1px solid white",
               }}
               onChange={handleChange}
-              placeholder="Search here..."
+              placeholder="Search artist/song here..."
             />
             <Button
               size="large"
