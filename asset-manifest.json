@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/spootifi-mieapp/static/css/main.531fd9ee.css",
-    "main.js": "/spootifi-mieapp/static/js/main.ef6ed89a.js",
-    "static/js/453.a9b5369e.chunk.js": "/spootifi-mieapp/static/js/453.a9b5369e.chunk.js",
+    "main.css": "/spootifi-mieapp/static/css/main.4be85f40.css",
+    "main.js": "/spootifi-mieapp/static/js/main.2174dba6.js",
+    "static/js/453.9935d4ee.chunk.js": "/spootifi-mieapp/static/js/453.9935d4ee.chunk.js",
     "index.html": "/spootifi-mieapp/index.html",
-    "main.531fd9ee.css.map": "/spootifi-mieapp/static/css/main.531fd9ee.css.map",
-    "main.ef6ed89a.js.map": "/spootifi-mieapp/static/js/main.ef6ed89a.js.map",
-    "453.a9b5369e.chunk.js.map": "/spootifi-mieapp/static/js/453.a9b5369e.chunk.js.map"
+    "main.4be85f40.css.map": "/spootifi-mieapp/static/css/main.4be85f40.css.map",
+    "main.2174dba6.js.map": "/spootifi-mieapp/static/js/main.2174dba6.js.map",
+    "453.9935d4ee.chunk.js.map": "/spootifi-mieapp/static/js/453.9935d4ee.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.531fd9ee.css",
-    "static/js/main.ef6ed89a.js"
+    "static/css/main.4be85f40.css",
+    "static/js/main.2174dba6.js"
   ]
 }
