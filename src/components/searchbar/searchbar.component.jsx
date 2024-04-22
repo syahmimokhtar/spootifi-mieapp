@@ -4,7 +4,7 @@ import { SearchOutlined } from "@ant-design/icons";
 import { Form, Input, Button, Row, Col, Space } from "antd";
 import axios from "axios";
 import getToken from "./tokenAuth.component";
-import Login from "../login/login.component";
+// import Login from "../login/login.component";
 
  //capitalize searched
  const capitalize = (str) => {
@@ -23,6 +23,7 @@ const SearchBar = ({
   setPlaylists,
   setRelatedArtists,
   setArtistInfo,
+  setGenre
 }) => {
   const [searchValue, setSearchValue] = useState("");
   const [accessToken, setAccessToken] = useState("");
@@ -45,13 +46,12 @@ const SearchBar = ({
   //         "Content-Type": "application/json",
   //         Authorization: "Bearer " + accessToken,
   //       };
-  //       const urlGenre=`https://api.spotify.com/v1/recommendations/available-genre-seeds`;
-  //        const response = await axios.get(urlGenre, {headers});
-  //        console.log('data', typeof(response))
-  //       // const { genres } = response.data;
-  //       // // Update state with the genre data
-  //       // console.log(genres)
-  //       // setGenre(genres);
+  //         const urlGenre=`https://api.spotify.com/v1/recommendations/available-genre-seeds`;
+  //         const responseData = await axios.get(urlGenre, {headers});
+  //         const { genres } = responseData.data;
+  //         // Update state with the genre data
+  //         console.log(genres)
+  //         setGenre(genres);
   //     } catch (error) {
   //       console.error('Error fetching genres:', error);
   //     }
@@ -161,14 +161,14 @@ const SearchBar = ({
 
   return (
 
-      <Row gutter={[16, 16]}>
-        <Col span={10} />
-        <Form name="search-form" layout="vertical" onSubmit={handleSearch}>
+    // <Row gutter={[16, 16]} justify="center">
+    //     <Col span={24} />
+        <Form name="search-form"  onSubmit={handleSearch}>
           <Space.Compact
             style={{
               width: "100%",
-              margin: " 10px 12px",
-              padding:"20px 4px"
+              margin: "10px 10px ",
+              padding: "20px 14px",
             }}
           >
             <Input
@@ -176,7 +176,7 @@ const SearchBar = ({
                 width: "100%",
                 color: "white",
                 backgroundColor: "#201E1E",
-                border: "none",
+                border: "1px solid white",
               }}
               onChange={handleChange}
               placeholder="Search here..."
@@ -188,7 +188,7 @@ const SearchBar = ({
               style={{ backgroundColor: "#35B86B" }}
               htmlType="submit"
               icon={<SearchOutlined />}
-            ></Button>
+            > </Button>
 
             {/* <Button
               size="medium"
@@ -199,13 +199,11 @@ const SearchBar = ({
               icon={<UndoOutlined />}
             ></Button> */}
 
-            <Login/>
-
 
           </Space.Compact>
         </Form>
-        <Col />
-      </Row>
+      //   <Col />
+      // </Row>
   );
 };
 

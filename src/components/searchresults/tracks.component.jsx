@@ -3,13 +3,16 @@ import { Avatar, List } from "antd";
 import VirtualList from "rc-virtual-list";
 import MusicPlayer from "../musicplayer/musicplayer.component";
 import ButtonStyle from "../button/button.component";
+import Typography from "../typography/typography.component";
 
 const ContainerHeight = 400;
 const ArtistListTracks = ({ items }) => {
   const [token, setToken] = useState("");
   const [trackUri, setTrackUri] = useState("");
+  const [disabled, setDisabled] = useState(false);
 
 
+  
   useEffect(() => {
     const hash = window.location.hash;
     let token = window.localStorage.getItem("token");
@@ -25,6 +28,12 @@ const ArtistListTracks = ({ items }) => {
     setToken(token);
   }, []);
 
+  
+  useEffect(() => {
+    setDisabled(token === null || token === "");
+  }, [token]);
+  
+
   const playMusic = (uri) => {
     setTrackUri(uri);
   };
@@ -32,7 +41,8 @@ const ArtistListTracks = ({ items }) => {
   return (
     <>
       {trackUri && <MusicPlayer accessToken={token} trackUri={trackUri} />}
-
+       
+       
       {items.tracks  && (
         <List>
           <VirtualList
@@ -60,14 +70,19 @@ const ArtistListTracks = ({ items }) => {
                     </span>
                   }
                 />
+      
+             
                 <div style={{ color: "#fff" }}>
-                  <ButtonStyle onClick={() => playMusic(item.uri)}>
+                  <ButtonStyle  disabled={disabled} onClick={() => playMusic(item.uri)}>
                     Play
                   </ButtonStyle>
                 </div>
+
+
               </List.Item>
             )}
           </VirtualList>
+          <Typography style={ {fontStyle:'italic', color:'white'} } level={5}>*In order to play the music, you need to login with  a premium spotify account</Typography>
         </List>
       ) }
     </>

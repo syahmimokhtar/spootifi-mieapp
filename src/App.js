@@ -7,9 +7,10 @@ import Albums from "./components/searchresults/albums.component";
 import ArtistListTracks from "./components/searchresults/tracks.component";
 import PlayList from "./components/searchresults/playlist.component";
 import AboutArtist from "./components/searchresults/aboutartist.component";
-
-import { Flex, Row, Layout, Menu } from "antd";
+import Login from "./components/login/login.component";
 import Artists from "./components/searchresults/artist.component";
+
+import { Flex, Row,Col,  Layout, Menu } from "antd";
 
 const {  Content } = Layout;
 const layoutStyle = {
@@ -51,19 +52,23 @@ function App() {
             setRelatedArtists={setRelatedArtists}
             setGenre={setGenre}
           />
+         <Login /> 
+
         </Flex>
+
 
       </HeaderWeb >
 
       
         <Layout style={{ maxWidth: "100%", background: "#151313", padding: "10px" }}>
             <Row>
-              <Flex justify="flex-start" align="flex-start">
-                <Content style={contentStyle}>
+              
+              <Col span={32}>
+                  <Content style={contentStyle}>
                   <AboutArtist items={artistInfo} />
                 </Content>
-               </Flex>
-
+              </Col>
+             
               <Content style={contentStyle}>
                 <ArtistListTracks items={tracks} />
               </Content>

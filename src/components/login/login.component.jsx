@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ButtonStyle from "../button/button.component";
+import {  Avatar, Flex, Row, Col } from 'antd';
 import axios from "axios";
+
 
 const clientId = process.env.REACT_APP_API_KEY;
 var urlHost;
@@ -21,7 +23,7 @@ const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${clientId}&r
 const Login = () => {
   const [token, setToken] = useState("");
   const [profileData, setProfileData] = useState(null);
-  const [lyrics, setLyrics] = useState("");
+
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -38,33 +40,42 @@ const Login = () => {
 
     setToken(token);
 
-    // const getProfile = async () => {
-    //   try {
-    //     const headers = {
-    //       Authorization: "Bearer " + token,
-    //     };
 
-    //     //get albums, playlist , artist,track
-    //     var urlData = `https://api.spotify.com/v1/me`;
-    //     const response = await axios.get(urlData, { headers });
-    //     const profileData = response.data;
-    //     return profileData;
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
-
-    // const fetchData = async () => {
-    //   try {
-    //     const data = await getProfile(token);
-    //     setProfileData(data);
-    //   } catch (error) {
-    //     // Handle errors
-    //   }
-    // };
-
-    //fetchData(token);
   }, []);
+
+
+
+    //get profile data
+  useEffect(()=>
+  {
+    const getProfile = async () => {
+      try {
+
+        if(token){
+          console.log('login success...')
+          const headers = {
+            "Content-Type":"application/json",
+            Authorization: "Bearer " + token,
+          };
+  
+          var urlProfile = `https://api.spotify.com/v1/me`;
+          const response = await axios.get(urlProfile, { headers });
+          const profileData = response.data;
+          setProfileData(profileData)
+          console.log('profile', profileData);
+  
+        }
+   
+      } 
+      
+      catch (error) {
+        console.log('error' , error);
+      }
+    };
+
+    getProfile();
+    
+  },[token])
 
   const handleLogout = () => {
     setToken("");
@@ -79,31 +90,54 @@ const Login = () => {
 
   return (
     <>
+
+
+    <Row justify="flex-start" >
+     
+    <Col  xs={24} xl={8}>    
       {!token ? (
-        <ButtonStyle
-          size="large"
-          type="primary"
-          htmlType="button"
-          onClick={handleLogin}
-        >
-          Login
-        </ButtonStyle>
-      ) : (
-        <ButtonStyle
+       
+        
+        <ButtonStyle size="large" type="primary"htmlType="button" onClick={handleLogin}
+        >Login</ButtonStyle>) : 
+        
+        (
+          <ButtonStyle
           size="large"
           type="primary"
           htmlType="button"
           onClick={handleLogout}
-        >
+          >
           Logout
         </ButtonStyle>
-      )}
+       )}
+      </Col>
+
+    </Row>
+
+      
+    {profileData && (
+      <Row>
+        <Col>
+          <Avatar size={40} src={profileData.images[0].url} />
+        </Col>
+        <Col>
+          <p style={{ margin: 0 }}>Hello, {profileData.display_name}</p>
+        </Col>
+
+      </Row>
+
+
+    // <div style={{ backgroundColor:'black', margin: "10px", padding:'5px', display: "flex", alignItems: "flex-end" }}>
+    //     <p style={{ margin: 0 }}>Hello, {profileData.display_name}</p>
+    // </div>
+  )}
+
+
     </>
+
   );
 };
 
 export default Login;
 
-{
-  /* <div>{profileData ? profileData.display_name : ""}</div> */
-}
