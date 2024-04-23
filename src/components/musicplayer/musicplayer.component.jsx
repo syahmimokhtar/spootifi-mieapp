@@ -28,6 +28,7 @@ const playerStyles={
         layout ='responsive'
         styles={playerStyles}
         token={accessToken}
+        hideAttribution ={true}
         showSaveIcon
         callback={state => {
           if (!state.isPlaying) setPlay(false)

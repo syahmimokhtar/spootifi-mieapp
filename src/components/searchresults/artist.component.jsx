@@ -5,10 +5,7 @@ import { Flex, Card, } from "antd";
 import Typography from "../typography/typography.component";
 
 const { Meta } = Card;
-
-const style={
-  color:'white'
-}
+const style={color:'white'}
 
 const Artists = ({ items }) => {
 

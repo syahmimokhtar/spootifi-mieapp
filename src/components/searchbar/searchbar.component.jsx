@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from "react";
 import "./searchbar.styles.scss";
 import { SearchOutlined } from "@ant-design/icons";
-import { Form, Input, Button, Row, Col, Space } from "antd";
+import { Form, Input, Button,  Space } from "antd";
 import axios from "axios";
 import getToken from "./tokenAuth.component";
 // import Login from "../login/login.component";
 
  //capitalize searched
- const capitalize = (str) => {
-  var string= str.split(" ");
-  var converted = string.map(
-    (word) => word.charAt(0).toUpperCase() + word.slice(1)
-  );
-  var finalWord = converted.join(" ");
-  return finalWord;
-};
+//  const capitalize = (str) => {
+//   var string= str.split(" ");
+//   var converted = string.map(
+//     (word) => word.charAt(0).toUpperCase() + word.slice(1)
+//   );
+//   var finalWord = converted.join(" ");
+//   return finalWord;
+// };
+
+const capitalizeAll=(string)=>
+{
+  return string.toUpperCase();
+}
 
 
 const SearchBar = ({
@@ -39,47 +44,51 @@ const SearchBar = ({
   const fetchAlbums = async (searchKey) => {
     try {
 
-      if(searchKey.trim()===""){
-        return
-      }
+      if(searchKey.trim()===""){return}
       
       const headers = {
         "Content-Type": "application/json",
         Authorization: "Bearer " + accessToken,
       };
-
-      const trimSearchKey = capitalize(searchKey);
+      // const trimSearchKey = capitalize(searchKey);
+      const trimSearchKey = capitalizeAll(searchKey);
 
       
-
       //get albums, playlist , artist,track
-      var urlData = `https://api.spotify.com/v1/search?q=${trimSearchKey}&type=show,artist,track,album,playlist&limit=10&market=ES&sort=popularity`;
+      var urlData = `https://api.spotify.com/v1/search?q=${trimSearchKey}&type=show,artist,track,album,playlist&limit=5&sort=popularity`;
       const response = await axios.get(urlData, { headers });
-      //  console.log('searched', response.data)
+      console.log('searched data', response.data)
       const playlistData = response.data.playlists.items;
       setPlaylists(playlistData);
 
       //search artist name and get the artist id
-      var element=response.data.artists.items.find(item=>item.name===(`${trimSearchKey}`))
+      // var element=response.data.artists.items.find(item=>item.name===(`${trimSearchKey}`))
+      var element = response.data.artists.items.filter(item => item.name.toUpperCase() === trimSearchKey);
+      var cleanResponse=response.data.artists.items.sort((a, b) => b.followers.total - a.followers.total);
+      // console.log('clean array', cleanResponse)
       var elementID;
 
       if(!element){
         console.log('artis tak dapat cari so search lagu')
         var search=response.data.tracks.items.find(item=>item.name===(`${trimSearchKey}`))
         if(search){
-           elementID=search.artists[0].id;
+          //  elementID=search.artists[0].id;
+           elementID=cleanResponse[0].id;
            console.log(search)
         }
         else{
-          console.log('couldnt find')
-          elementID=response.data.artists.items[0].id;
-          // return;
+          console.log('couldnt find anything')
+          // elementID=response.data.artists.items[0].id;
+          elementID=cleanResponse[0].id;
         }
       }
 
+      //artist found
       else if(element){
          console.log('carian artis wujud')
-         elementID=element.id;
+        //  elementID=element.id;
+        elementID=cleanResponse[0].id;
+
       }
 
 
@@ -89,13 +98,12 @@ const SearchBar = ({
       const artistResponse = `https://api.spotify.com/v1/artists/${artistID}`;
       const artistData = await axios.get(artistResponse, { headers });
       const artistInfo = artistData.data;
-      // console.log(artistInfo)
       setArtistInfo(artistInfo);
 
       //get top tracks of artists
       var urlTrack = `https://api.spotify.com/v1/artists/${artistID}/top-tracks`;
-      const response2 = await axios.get(urlTrack, { headers });
-      var responseTracks = response2.data;
+      const responseTrack = await axios.get(urlTrack, { headers });
+      var responseTracks = responseTrack.data;
       setTracks(responseTracks);
 
       // get related artists artist info
@@ -105,6 +113,7 @@ const SearchBar = ({
       });
       setRelatedArtists(responseArtists.data);
 
+      
       // Check if albums are present in the response
       if (response.data && response.data.albums && response.data.albums.items) {
         setAlbums(response.data.albums.items);

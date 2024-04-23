@@ -40,6 +40,11 @@ const ArtistListTracks = ({ items }) => {
 
   return (
     <>
+        {items.tracks  && (
+          <p>Artist Top Tracks</p>
+        )}
+
+      
       {trackUri && <MusicPlayer accessToken={token} trackUri={trackUri} />}
        
        
@@ -63,7 +68,7 @@ const ArtistListTracks = ({ items }) => {
                       src={`${item.album.images[0].url}`}
                     />
                   }
-                  title={<a style={{ color: "#fff" }}>{item.name}</a>}
+                  title={<span  style={{ fontSize:'15px' ,color: "#fff" }}>{item.name}</span>}
                   description={
                     <span style={{ color: "white" }}>
                       {item.album.artists[0].name}
