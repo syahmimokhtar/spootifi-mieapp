@@ -11,7 +11,6 @@ const cardStyle = {
   backgroundColor:'#302E2E',
   border:'none',
   color:'#fff',
-  overflow:'none',
 };
 
 

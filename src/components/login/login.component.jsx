@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ButtonStyle from "../button/button.component";
-import { Avatar, Flex, Row, Col } from "antd";
+import { Avatar, Row, Col } from "antd";
 import axios from "axios";
 
 const clientId = process.env.REACT_APP_API_KEY;

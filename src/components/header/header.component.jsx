@@ -1,5 +1,4 @@
 import React from 'react'
-import TypoStyles from "../typography/typography.component";
 import './header.styles.scss'; // Import CSS for styling
 import { Layout } from 'antd';
 const { Header} = Layout;

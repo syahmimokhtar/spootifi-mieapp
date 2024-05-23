@@ -24,7 +24,7 @@ const AboutArtist = ({ items }) => {
 
   return (
   <>
-      {items.length !=0 ? (
+      {items.length !==0 ? (
           <Card hoverable style={cardStyle}>
             <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }} align="middle">
               <Col xs={24} sm={10}>
